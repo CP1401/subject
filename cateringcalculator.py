@@ -60,11 +60,12 @@ function process_catering()
 COST_PER_HEAD = 10.0
 CHILD_RATE = 0.6  # 60%
 PREMIUM_RATE = 1.25
+
 MENU = "\nMenu:\n(I)nstructions\n(C)alculate Catering\n(Q)uit"
-INSTRUCTIONS = "Enter number of adults and children and choose a service type.\n\
-Basic:   food only    = ${:0.2f} per adult\n\
-Premium: food & drink = ${:0.2f} per adult\n\
-Children are always {}% of the price of adults.".format(COST_PER_HEAD, COST_PER_HEAD * PREMIUM_RATE, CHILD_RATE * 100)
+INSTRUCTIONS = f"Enter number of adults and children and choose a service type.\n\
+Basic:   food only    = ${COST_PER_HEAD:0.2f} per adult\n\
+Premium: food & drink = ${COST_PER_HEAD * PREMIUM_RATE:0.2f} per adult\n\
+Children are always {CHILD_RATE * 100}% of the price of adults."
 
 
 def main():
@@ -121,8 +122,8 @@ def process_catering():
         child_word = "child"
     else:
         child_word = "children"
-    print("\nThat will be $%0.2f for the %s service for %d %s and %d %s. Enjoy!" % (
-        cost, service_message, number_of_adults, adult_word, number_of_children, child_word))
+    print()
+    print(f"That will be ${cost:.2f} for the {service_message} service for {number_of_adults} {adult_word} and {number_of_children} {child_word}. Enjoy!")
 
 
 main()

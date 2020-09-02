@@ -1,10 +1,11 @@
 """
-CP1401 Example (from Help Session 31/08/2020)
+CP1401 Example (from Help Session 01/09/2020)
 Score -> Result program with menu, accumulation, etc.
 (a bit similar to smiley, frowny from prac 4)
 
 Now with added functions.
-This version improves on the previous one by removing the duplication (DRY) of the section that prints the status.
+This version improves on the previous one by removing the duplication (DRY)
+of the section that prints the status.
 """
 MINIMUM_SCORE = 0
 MAXIMUM_SCORE = 10

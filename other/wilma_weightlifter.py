@@ -30,27 +30,41 @@ write pb to file_out
 close file_out
 """
 
-total = 0
-is_pb = False
-filename = "pb.txt"
-file_in = open(filename, "r")
-pb = float(file_in.read())
-file_in.close()
 
-number_of_lifts = int(input("Number: "))
-for i in range(number_of_lifts):
-    current_lift = float(input("Lift: "))
-    while current_lift < 0:
-        print("Error")
-        current_lift = float(input("Lift: "))
-    total += current_lift
-    if current_lift > pb:
-        print(":) :)")
-        pb = current_lift
-        is_pb = True
-    print(total)
+def main():
+    total = 0
+    is_pb = False
+    filename = "pb.txt"
 
-if is_pb:
-    file_out = open(filename, "w")
-    print(pb, file=file_out)
-    file_out.close()
+    pb = get_pb(filename)
+
+    number_of_lifts = int(input("Number of lifts: "))
+    for i in range(number_of_lifts):
+        current_lift = float(input("Lift weight (kg): "))
+        while current_lift < 0:
+            print("Error")
+            current_lift = float(input("Lift weight (kg): "))
+        total += current_lift
+        if current_lift > pb:
+            print(":) :)")
+            pb = current_lift
+            is_pb = True
+        print(total)
+
+    if is_pb:
+        file_out = open(filename, "w")
+        print(pb, file=file_out)
+        file_out.close()
+
+
+def get_pb(filename):
+    try:
+        file_in = open(filename, "r")
+        pb = float(file_in.read())
+        file_in.close()
+    except FileNotFoundError:
+        pb = 0.0
+    return pb
+
+
+main()

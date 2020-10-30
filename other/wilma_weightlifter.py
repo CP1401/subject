@@ -37,7 +37,6 @@ def main():
     filename = "pb.txt"
 
     pb = get_pb(filename)
-
     number_of_lifts = int(input("Number of lifts: "))
     for i in range(number_of_lifts):
         current_lift = float(input("Lift weight (kg): "))
@@ -50,11 +49,14 @@ def main():
             pb = current_lift
             is_pb = True
         print(total)
-
     if is_pb:
-        file_out = open(filename, "w")
-        print(pb, file=file_out)
-        file_out.close()
+        save_pb(filename, pb)
+
+
+def save_pb(filename, pb):
+    file_out = open(filename, "w")
+    print(pb, file=file_out)
+    file_out.close()
 
 
 def get_pb(filename):

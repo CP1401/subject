@@ -1,8 +1,8 @@
 """
 This program was originally the CP1200 (Programming 1) Assignment 1 from 2014
-    Catering Calculator
-    Lindsay Ward
-    18/02/2014, updated 2020
+Catering Calculator
+Lindsay Ward
+Created 18/02/2014, Updated 2026
 
 Pseudocode:
 
@@ -11,49 +11,49 @@ CHILD_RATE = 0.6
 PREMIUM_RATE = 1.25
 
 function main()
-    display welcome message
-    display menu
+    print welcome message
+    print menu
     get choice
-    while choice is not 'q'
-        if choice is 'i'
-            display instructions
-        else if choice is 'c'
+    while choice != 'q'
+        if choice == 'i'
+            print instructions
+        else if choice == 'c'
             call process_catering()
         else
-            display invalid choice message
-        display menu
+            print invalid choice message
+        print menu
         get choice
     print farewell message
 
 
 function process_catering()
-    get number of adults
-    while number of adults is < 0
-        display error message
-        get number of adults
-    get number of children
-    while number of children < 0
-        display error message
-        get number of children
-    get service type
-    while service type is not 'b' and service type is not 'p'
-        display error message
-        get service type
+    get number_of_adults
+    while number_of_adults < 0
+        print error message
+        get number_of_adults
+    get number_of_children
+    while number_of_children < 0
+        print error message
+        get number_of_children
+    get service_type
+    while service_type != 'b' and service_type != 'p'
+        print error message
+        get service_type
 
-    cost = number of adults * COST_PER_HEAD + number of children * COST_PER_HEAD * CHILD_RATE
-    service message = 'basic'
-    if service type is 'p'
+    cost = number_of_adults * COST_PER_HEAD + number_of_children * COST_PER_HEAD * CHILD_RATE
+    service_message = 'basic'
+    if service_type == 'p'
         cost = cost * PREMIUM_RATE
-        service message = 'premium'
-    if number of adults is 1
-        adult message = 'adult'
+        service_message = 'premium'
+    if number_of_adults == 1
+        adult_message = 'adult'
     else
-        adult message = 'adults'
-    if number of children is 1
-        child message = 'child'
+        adult_message = 'adults'
+    if number_of_children == 1
+        child_message = 'child'
     else
-        child message = 'children'
-    display cost, service type, number of adults, adult message, number of children, child message, service message
+        child_message = 'children'
+    print cost, service_type, number_of_adults, adult_message, number_of_children, child_message, service_message
 
 """
 
@@ -71,7 +71,7 @@ Children are always {CHILD_RATE * 100}% of the price of adults."
 def main():
     """Catering calculator demo program."""
     print("Welcome to the Great CP1200 Catering Calculator!")
-    print("Written by Lindsay Ward, 2014-2020")
+    print("Written by Lindsay Ward, 2014-2026")
 
     print(MENU)
     choice = input(">>> ").upper()
@@ -105,15 +105,15 @@ def process_catering():
         print("Error. Please enter b or p")
         service_type = input("Would you like (B)asic or (P)remium service?: ").upper()
 
-    # calculate catering details
+    # Calculate catering cost
     cost = number_of_adults * COST_PER_HEAD + number_of_children * COST_PER_HEAD * CHILD_RATE
     service_message = "basic"
     if service_type == 'P':
-        # multiply basic total cost by premium rate to get premium total
+        # Multiply basic total cost by premium rate to get premium total
         cost *= PREMIUM_RATE
         service_message = "premium"
 
-    # print results, after determining correct singular/plural words
+    # Print results using appropriate singular/plural words
     if number_of_adults == 1:
         adult_word = "adult"
     else:
@@ -123,7 +123,8 @@ def process_catering():
     else:
         child_word = "children"
     print()
-    print(f"That will be ${cost:.2f} for the {service_message} service for {number_of_adults} {adult_word} and {number_of_children} {child_word}. Enjoy!")
+    print(
+        f"That will be ${cost:.2f} for the {service_message} service for {number_of_adults} {adult_word} and {number_of_children} {child_word}. Enjoy!")
 
 
 main()
